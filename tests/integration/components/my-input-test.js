@@ -1,4 +1,5 @@
 /* jshint expr:true */
+import Ember from 'ember';
 import { expect } from 'chai';
 import {
   describeComponent,
@@ -18,10 +19,10 @@ describeComponent(
       this.render(hbs`{{my-input}}`);
       expect(this.$('input').val()).to.equal('init');
 
-      this.$('input').trigger('focusin');
+      Ember.run(this.$('input'), 'trigger', 'focusin');
       expect(this.$('input').val()).to.equal('focusin');
 
-      this.$('input').trigger('focusout');
+      Ember.run(this.$('input'), 'trigger', 'focusout');
       expect(this.$('input').val()).to.equal('focusout');
     });
   }
